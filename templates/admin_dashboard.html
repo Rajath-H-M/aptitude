@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('manage_categories') }}">Manage Categories</a></li>
+                <li><a href="{{ url_for('manage_quizzes') }}">Manage Quizzes</a></li>
+                <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome, {{ username }}!</h2>
+            <p>Use the navigation links above to manage categories and quizzes.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aptitude Driven Career Application. All rights reserved.</p>
+    </footer>
+</body>
+</html>

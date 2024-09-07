@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Categories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Manage Categories</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a></li>
+                <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Add New Category</h2>
+            <form action="{{ url_for('manage_categories') }}" method="POST">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required>
+                <button type="submit">Add Category</button>
+            </form>
+            <h2>Categories</h2>
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        {{ category.name }}
+                        <form action="{{ url_for('delete_category', category_id=category.id) }}" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aptitude Driven Career Application. All rights reserved.</p>
+    </footer>
+</body>
+</html>

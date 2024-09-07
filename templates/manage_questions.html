@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Manage Questions</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a></li>
+                <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Add New Question</h2>
+            <form action="{{ url_for('manage_questions', quiz_id=quiz_id) }}" method="POST">
+                <label for="text">Question:</label>
+                <input type="text" id="text" name="text" required>
+                <button type="submit">Add Question</button>
+            </form>
+            <h2>Questions</h2>
+            <ul>
+                {% for question in questions %}
+                    <li>
+                        {{ question.text }} - 
+                        <a href="{{ url_for('manage_options', question_id=question.id) }}">Manage Options</a>
+                        <form action="{{ url_for('delete_question', question_id=question.id) }}" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aptitude Driven Career Application. All rights reserved.</p>
+    </footer>
+</body>
+</html>

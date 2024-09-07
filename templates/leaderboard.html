@@ -1,0 +1,128 @@
+<!-- leaderboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        /* Your existing CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        main {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .filter-form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .filter-form select {
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .filter-form button {
+            padding: 8px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leaderboard</h1>
+    </header>
+    <main>
+        <form class="filter-form" action="{{ url_for('view_leaderboard') }}" method="GET">
+            <label for="user_filter">Filter by User:</label>
+            <select id="user_filter" name="user_id">
+                <option value="">All Students</option>
+                {% for user in users %}
+                    {% if not user.is_admin %}
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <label for="quiz_filter">Filter by Quiz:</label>
+            <select id="quiz_filter" name="quiz_id">
+                <option value="">All Quizzes</option>
+                {% for quiz in quizzes %}
+                <option value="{{ quiz.id }}">{{ quiz.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Apply Filters</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quiz Name</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in leaderboard_results %}
+                <tr>
+                    <td>{{ result.user.username }}</td>
+                    <td>{{ result.quiz.name }}</td>
+                    <td>{{ result.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aptitude Driven Career Application. All rights reserved.</p>
+    </footer>
+</body>
+</html>

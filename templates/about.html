@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitude Driven Career Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        <h1>Aptitude Driven Career Application</h1>
+        <nav>
+            <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="about-us">
+            <h2>About Us</h2>
+            <p>
+                6th Sem Computer Science Students. <br>
+                1.Prajwal C G - 4MC21CS111 <br>
+                2.Prajwal R   - 4MC21CS112 <br>
+                3.Rajath B G  - 4MC21CS120 <br>
+                4.Rajath H M  - 4MC21CS121 <br>
+            </p>
+        </section>
+        <section class="contact-us">
+            <h2>Contact Us</h2>
+            <p>Email: aptitude@gmail.com</p>
+            <p>Phone: +91 9901230562</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Aptitude Driven Career Application. All rights reserved.</p>
+    </footer>
+</body>
+</html>
