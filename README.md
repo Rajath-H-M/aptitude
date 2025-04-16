@@ -1,6 +1,6 @@
-#Mini Project on Aptitude driven Career Application .
+# Project on Aptitude driven Career Application .
 
-#Output
+# Output
 
 ![Screenshot (223)](https://github.com/user-attachments/assets/c9cf14f6-fe69-49bc-845f-738ec7ccaa05)
 ![a1](https://github.com/user-attachments/assets/d9f37762-ebed-4a42-9258-2d00dd5f137b)
